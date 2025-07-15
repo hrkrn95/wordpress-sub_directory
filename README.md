@@ -4,7 +4,7 @@ A definitive guide to installing a WordPress website on a clean Ubuntu VPS, acce
 
 ---
 
-## Table of Contents
+## **Table of Contents**
 
 1.  [Initial Server Hardening](#step-1-initial-server-hardening)
 2.  [Install Apache & Database](#step-2-install-the-content-web-stack)
@@ -62,12 +62,13 @@ Install packages
 Generated bash
 # Refresh package lists and install all software
 sudo apt update
-sudo apt install apache2 mariadb-server php libapache2-mod-php php-mysql -y
-Use code with caution.
-Bash
-Secure the database
-Run the interactive security script and follow the prompts. It is highly recommended to set a strong root password.
-Generated bash
+sudo apt install apache2 mariadb-server php libapache2-mod-php php-mysql -y```
+
+### **Secure the database**
+
+Run the interactive security script and follow the prompts. It is **highly recommended** to set a strong root password.
+
+```bash
 sudo mysql_secure_installation
 Use code with caution.
 Bash
@@ -182,11 +183,11 @@ Generated apache
 
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>
-Use code with caution.
-Apache
-Enable the new configuration
-Generated bash
+</VirtualHost>```
+
+### **Enable the new configuration**
+
+```bash
 # Enable the URL rewriting module, required by WordPress
 sudo a2enmod rewrite
 
@@ -196,7 +197,7 @@ sudo a2ensite your_domain.com.conf
 # Disable the default welcome page to avoid conflicts
 sudo a2dissite 000-default.conf
 Use code with caution.
-Bash
+Apache
 Test and restart Apache
 Generated bash
 # Check for syntax errors
@@ -267,5 +268,3 @@ Broken Styles/CSS (Unstyled Page): This means WordPress doesn't know its correct
 Fix: Double-check that the reverse proxy code block in wp-config.php is present, correct, and in the right place (Step 8).
 404 Not Found: This indicates a path mismatch.
 Fix: Ensure the path /blogs/ is used consistently in three places: the Apache Alias directive, the NPM Custom location, and the WordPress WP_HOME/WP_SITEURL definitions.
-Generated code
-Use code with caution.
